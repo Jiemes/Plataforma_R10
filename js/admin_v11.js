@@ -1,4 +1,4 @@
-// Administración CFP 403 // Core Admin Logic v9.18.3 (RBAC & Multi-Course Logistics)
+// Administración Plataforma_R10 // Core Admin Logic v9.18.3 (RBAC & Multi-Course Logistics)
 let adminSession = JSON.parse(localStorage.getItem('admin_session'));
 if (!adminSession) { window.location.href = 'index.html'; }
 
@@ -20,13 +20,14 @@ async function loadStudentsFromFirebase() {
         let coursesSnap = null;
         try {
             if (adminSession.role === 'super-admin') {
-                coursesSnap = await db.collection('cursos').get();
+                coursesSnap = await db.collection('cursos').where('platformId', '==', PLATFORM_ID).get();
                 if (coursesSnap.empty) {
-                    await db.collection('cursos').doc('habilidades').set({ nombre: "Habilidades Digitales & IA", materia: "Habilidades", activo: true });
-                    await db.collection('cursos').doc('programacion').set({ nombre: "Software & Videojuegos", materia: "Programacion", activo: true });
-                    return loadStudentsFromFirebase();
+                    // Si no hay cursos para esta plataforma, podríamos crear unos iniciales o dejarlo vacío
+                    // Por ahora, si es super-admin y está vacío, no creamos los de CFP 403 por defecto.
+                    activeCourses = [];
+                } else {
+                    activeCourses = coursesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 }
-                activeCourses = coursesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             } else if (adminSession.role === 'profesor' && adminSession.cursos) {
                 activeCourses = [];
                 for (let cid of adminSession.cursos) {
@@ -775,7 +776,10 @@ async function deleteWeek(num) {
 
 function initNotifications() {
     if (notificationsListener) notificationsListener();
-    notificationsListener = db.collection('entregas').where('estado', '==', 'Pendiente').onSnapshot(snap => {
+    notificationsListener = db.collection('entregas')
+        .where('estado', '==', 'Pendiente')
+        .where('platformId', '==', PLATFORM_ID)
+        .onSnapshot(snap => {
         const b = document.getElementById('notif-count');
         if (b) {
             b.innerText = snap.size;
@@ -893,7 +897,7 @@ async function saveNewCourse() {
     if (!id || !nombre) return cfpAlert("ERROR", "Completa los campos.");
     try {
         // 1. Crear el curso en la lista maestra
-        await db.collection('cursos').doc(id).set({ nombre, materia: base, activo: true });
+        await db.collection('cursos').doc(id).set({ nombre, materia: base, activo: true, platformId: PLATFORM_ID });
         
         // 2. Inicializar el cronograma de contenidos para este curso
         await db.collection('config_cursos').doc(id).set({ materiales: {} }, { merge: true });
@@ -1131,7 +1135,8 @@ async function sendMessageAdmin() {
             mensaje: msg,
             fecha: new Date().toISOString(),
             timestamp: new Date().toISOString(), // redundancia por soporte antiguo
-            respuesta_a: isReplying ? { name: replyToName, mensaje: "Respuesta desde Admin" } : null
+            respuesta_a: isReplying ? { name: replyToName, mensaje: "Respuesta desde Admin" } : null,
+            platformId: PLATFORM_ID
         });
         input.value = '';
         cancelReplyAdmin();

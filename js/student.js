@@ -370,7 +370,8 @@ async function submitTask(semana) {
                 semana: semana,
                 archivo_url: rawUrl,
                 fecha_entrega: new Date().toISOString(),
-                estado: 'Pendiente'
+                estado: 'Pendiente',
+                platformId: PLATFORM_ID
             });
         }
 
@@ -490,7 +491,8 @@ async function sendMessageStudent() {
                 mensaje: msg,
                 fecha: new Date().toISOString(),
                 is_admin: false,
-                respuesta_a: replyToStudent
+                respuesta_a: replyToStudent,
+                platformId: PLATFORM_ID
             });
         }
         input.value = '';
