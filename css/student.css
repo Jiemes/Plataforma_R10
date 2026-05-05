@@ -765,3 +765,208 @@ body {
 .header-logo-side {
     height: 40px;
 }
+
+/* --- FORMACIÓN PROFESIONAL INFO STYLES --- */
+.fp-hero-banner {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 40px;
+    color: white;
+    margin-bottom: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 0 0 40px 40px;
+}
+
+.fp-hero-banner .banner-content {
+    max-width: 1000px;
+}
+
+.fp-section {
+    margin-bottom: 80px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Timeline */
+.fp-timeline {
+    position: relative;
+    padding: 20px 0;
+    margin-left: 20px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 40px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+}
+
+.timeline-year {
+    font-weight: 900;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Stats Grid */
+.fp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.fp-stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: var(--transition);
+}
+
+.fp-stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.stat-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.stat-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Profiles */
+.fp-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.fp-profile-card {
+    background: var(--primary-light);
+    padding: 40px;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.fp-profile-card:hover {
+    border-color: var(--primary-color);
+    background: white;
+}
+
+.profile-num {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.fp-profile-card h4 {
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* Map Section */
+.fp-map-section {
+    background: #1e293b;
+    color: white;
+    padding: 80px 60px;
+    border-radius: 40px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.fp-map-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.fp-map-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* Footer */
+.fp-institutional-footer {
+    text-align: center;
+    padding: 80px 0;
+    margin-top: 60px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer-logo {
+    height: 100px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.fp-institutional-footer p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.fp-special-card:hover {
+    border-color: #0369a1 !important;
+    box-shadow: 0 35px 60px -15px rgba(3, 105, 161, 0.2) !important;
+}
+
+@media (max-width: 768px) {
+    .fp-hero-banner {
+        padding: 60px 20px;
+    }
+    .fp-hero-banner h1 {
+        font-size: 1.8rem !important;
+    }
+    .fp-map-section {
+        padding: 40px 20px;
+    }
+}

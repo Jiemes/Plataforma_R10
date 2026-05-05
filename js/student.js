@@ -67,6 +67,23 @@ async function initStudentDashboard() {
         grid.appendChild(card);
     });
 
+    // AGREGAR CARD DE FORMACIÓN PROFESIONAL
+    const fpCard = document.createElement('div');
+    fpCard.className = 'course-card animated-in fp-special-card';
+    fpCard.innerHTML = `
+        <div class="course-icon">🇦🇷</div>
+        <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:5px;">FORMACIÓN PROFESIONAL</h3>
+        <div style="margin-bottom:15px;">
+            <span style="background:#e0f2fe; color:#0369a1; padding:4px 10px; border-radius:10px; font-weight:800; font-size:0.8rem;">
+                🏛️ Institucional
+            </span>
+        </div>
+        <p style="font-size:0.9rem; color:#64748b; margin-bottom:20px;">Conoce la historia y el impacto del trabajo bonaerense.</p>
+        <button class="btn-enter-course" style="background:#0369a1;">VER INFORMACIÓN</button>
+    `;
+    fpCard.onclick = openFpView;
+    grid.appendChild(fpCard);
+
     updateHeaderButton();
 }
 
@@ -83,13 +100,24 @@ function updateHeaderButton() {
             localStorage.removeItem('user_session');
             window.location.href = 'index.html';
         };
-    } else if (currentViewState === 'course') {
+    } else if (currentViewState === 'course' || currentViewState === 'fp') {
         newBtn.innerText = 'Inicio';
         newBtn.onclick = backToHome;
     } else if (currentViewState === 'viewer') {
         newBtn.innerText = 'Volver';
         newBtn.onclick = closeViewer;
     }
+}
+
+function openFpView() {
+    currentViewState = 'fp';
+    document.getElementById('home-view').classList.add('hidden');
+    document.getElementById('fp-view').classList.remove('hidden');
+    
+    const btnConfig = document.querySelector('.btn-config-main');
+    if (btnConfig) btnConfig.classList.add('hidden');
+
+    updateHeaderButton();
 }
 
 function selectCourse(courseId, courseName) {
@@ -113,6 +141,7 @@ function backToHome() {
     currentViewState = 'home';
 
     document.getElementById('course-view').classList.add('hidden');
+    document.getElementById('fp-view').classList.add('hidden');
     document.getElementById('home-view').classList.remove('hidden');
 
     const btnConfig = document.querySelector('.btn-config-main');
