@@ -71,7 +71,7 @@ async function initStudentDashboard() {
     const fpCard = document.createElement('div');
     fpCard.className = 'course-card animated-in fp-special-card';
     fpCard.innerHTML = `
-        <div class="course-icon">🇦🇷</div>
+        <div class="course-icon" style="background:none;"><img src="assets/logo_fp.png" style="height:80px; width:auto; object-fit:contain;"></div>
         <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:5px;">FORMACIÓN PROFESIONAL</h3>
         <div style="margin-bottom:15px;">
             <span style="background:#e0f2fe; color:#0369a1; padding:4px 10px; border-radius:10px; font-weight:800; font-size:0.8rem;">
