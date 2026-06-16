@@ -931,12 +931,13 @@ body {
 }
 
 .fp-map-section p {
-    font-size: 1.2rem;
-    max-width: 800px;
+    font-size: 1.15rem;
+    max-width: 900px;
     margin: 0 auto;
     opacity: 0.9;
     line-height: 1.7;
     text-align: justify;
+    text-align-last: center;
 }
 
 /* Origin Section */
@@ -963,12 +964,13 @@ body {
 }
 
 .fp-origin-section p {
-    font-size: 1.2rem;
-    max-width: 800px;
+    font-size: 1.15rem;
+    max-width: 900px;
     margin: 0 auto;
     opacity: 0.95;
     line-height: 1.7;
     text-align: justify;
+    text-align-last: center;
 }
 
 /* Footer */
