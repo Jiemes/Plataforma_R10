@@ -915,6 +915,12 @@ body {
     border-radius: 40px;
     text-align: center;
     margin-top: 40px;
+    transition: var(--transition);
+}
+
+.fp-map-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.15);
 }
 
 .fp-map-section h2 {
@@ -928,6 +934,36 @@ body {
     max-width: 800px;
     margin: 0 auto;
     opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* Origin Section */
+.fp-origin-section {
+    background: var(--primary-color);
+    color: white;
+    padding: 80px 60px;
+    border-radius: 40px;
+    text-align: center;
+    margin-top: 40px;
+    transition: var(--transition);
+}
+
+.fp-origin-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 185, 232, 0.15);
+}
+
+.fp-origin-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.fp-origin-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
     line-height: 1.7;
 }
 
@@ -966,43 +1002,7 @@ body {
     .fp-hero-banner h1 {
         font-size: 1.8rem !important;
     }
-    .fp-map-section {
+    .fp-map-section, .fp-origin-section {
         padding: 40px 20px;
     }
-}
-
-/* Highlight box for institutional text */
-.fp-highlight-box {
-    background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
-    border-left: 6px solid var(--primary-color);
-    padding: 30px 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 185, 232, 0.05);
-    margin-bottom: 60px;
-    transition: var(--transition);
-}
-
-.fp-highlight-box:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(0, 185, 232, 0.1);
-}
-
-.fp-highlight-box p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-dark);
-    font-weight: 500;
-    margin: 0;
-}
-
-/* Origen del proyecto custom card layout */
-.fp-project-origin-box {
-    background: white;
-    padding: 40px;
-    border-radius: 25px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: var(--text-dark);
 }
