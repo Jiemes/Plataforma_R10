@@ -927,6 +927,7 @@ body {
     font-size: 2.2rem;
     margin-bottom: 25px;
     font-weight: 900;
+    text-align: center;
 }
 
 .fp-map-section p {
@@ -935,6 +936,7 @@ body {
     margin: 0 auto;
     opacity: 0.9;
     line-height: 1.7;
+    text-align: justify;
 }
 
 /* Origin Section */
@@ -957,6 +959,7 @@ body {
     font-size: 2.2rem;
     margin-bottom: 25px;
     font-weight: 900;
+    text-align: center;
 }
 
 .fp-origin-section p {
@@ -965,6 +968,7 @@ body {
     margin: 0 auto;
     opacity: 0.95;
     line-height: 1.7;
+    text-align: justify;
 }
 
 /* Footer */
